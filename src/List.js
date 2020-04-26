@@ -10,7 +10,7 @@ const List = ({ list }) => {
                     <div classNAme="list-description">{item.description}</div>
                     <div classNAme="list-dates">
                         {item.due && <span>Due {item.due.toString()}</span>}
-                        {item.due && item.done && <span> &mid; </span>}
+                        {item.due && item.done && <span> &middot; </span>}
                         {item.done && <span>Done {item.done.toString()}</span>}
                     </div>
                 </li>
