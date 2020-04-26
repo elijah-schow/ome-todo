@@ -1,30 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useForm } from 'react-hook-form';
+import { v4 as uuid } from 'uuid';
 
 const AddItem = ({ action }) => {
 
-    const onSubmit = (event) => {
-        // Prevent the page from refreshing
-        event.preventDefault();
+    const { handleSubmit, register, reset } = useForm();
 
-        // Validate form
-
-        // Call `action` with the form data
+    const onSubmit = (data) => {
+        action({
+            id: uuid(),
+            ...data,
+        });
+        reset();
     };
 
     return (
-        <form onSubmit={onSubmit} className="card card-body mb-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="card card-body mb-4">
 
             {/* Name */}
             <div className="form-group">
                 <label for="name">Name</label>
-                <input id="name" className="form-control" name="name" />
+                <input
+                    id="name"
+                    className="form-control"
+                    name="name"
+                    ref={register()}
+                />
             </div>
 
             {/* Description */}
             <div className="form-group">
                 <label for="description">Description</label>
-                <textarea id="description" className="form-control" name="description" />
+                <textarea
+                    id="description"
+                    className="form-control"
+                    name="description"
+                    ref={register()}
+                />
             </div>
 
             {/* Dates */}
@@ -33,13 +46,25 @@ const AddItem = ({ action }) => {
                 {/* Due Date */}
                 <div className="form-group col-6">
                     <label for="due">Due</label>
-                    <input type="date" id="due" className="form-control" name="due" />
+                    <input
+                        type="date"
+                        id="due"
+                        className="form-control"
+                        name="due"
+                        ref={register()}
+                    />
                 </div>
 
                 {/* Done Date */}
                 <div className="form-group col-6">
                     <label for="done">Done</label>
-                    <input type="date" id="done" className="form-control" name="done" />
+                    <input
+                        type="date"
+                        id="done"
+                        className="form-control"
+                        name="done"
+                        ref={register()}
+                    />
                 </div>
 
             </div>
