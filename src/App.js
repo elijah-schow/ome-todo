@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import './App.css';
 import List from './List';
+import AddItem from './AddItem';
 
 function App() {
   const [ list, setList ] = useState([
@@ -21,8 +22,13 @@ function App() {
     }
   ]);
 
+  const addItem = (item) => {
+    setList(list.concat(item));
+  };
+
   return (
     <>
+      <AddItem action={addItem} />
       <List list={list} />
     </>
   );
