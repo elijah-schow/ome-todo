@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid';
+import 'bootstrap/dist/css/bootstrap.css';
+
 import './App.css';
 import List from './List';
 import AddItem from './AddItem';
 
 function App() {
-  const [ list, setList ] = useState([
+  const [list, setList] = useState([
     {
       id: uuid(),
       name: "Lorem ipsum dolor sit amet",
@@ -27,10 +29,11 @@ function App() {
   };
 
   return (
-    <>
+    <div className="container">
+      <h1 className="mb-3">To Do List</h1>
       <AddItem action={addItem} />
       <List list={list} />
-    </>
+    </div>
   );
 }
 

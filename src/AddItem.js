@@ -13,7 +13,7 @@ const AddItem = ({ action }) => {
     };
 
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className="card card-body mb-4">
 
             {/* Name */}
             <div className="form-group">
@@ -27,20 +27,25 @@ const AddItem = ({ action }) => {
                 <textarea id="description" className="form-control" name="description" />
             </div>
 
-            {/* Due Date */}
-            <div className="form-group">
-                <label for="due">Due</label>
-                <input type="date" id="due" className="form-control" name="due" />
-            </div>
+            {/* Dates */}
+            <div className="row">
 
-            {/* Done Date */}
-            <div className="form-group">
-                <label for="done">Done</label>
-                <input type="date" id="done" className="form-control" name="done" />
+                {/* Due Date */}
+                <div className="form-group col-6">
+                    <label for="due">Due</label>
+                    <input type="date" id="due" className="form-control" name="due" />
+                </div>
+
+                {/* Done Date */}
+                <div className="form-group col-6">
+                    <label for="done">Done</label>
+                    <input type="date" id="done" className="form-control" name="done" />
+                </div>
+
             </div>
 
             {/* Submit */}
-            <button>Add</button>
+            <button className="btn btn-primary btn-block">Add</button>
 
         </form>
     );

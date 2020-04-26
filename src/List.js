@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 const List = ({ list }) => {
     return (
-        <ul className="list">
+        <ul className="list list-group">
             {list.map((item) => (
-                <li className="list-item" key={item.id}>
+                <li className="list-item list-group-item" key={item.id}>
                     <div className="list-name">{item.name}</div>
                     <div classNAme="list-description">{item.description}</div>
                     <div classNAme="list-dates">
