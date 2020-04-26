@@ -24,15 +24,20 @@ function App() {
     }
   ]);
 
-  const addItem = (item) => {
-    setList(list.concat(item));
+  const actions = {
+    addItem: (item) => {
+      setList(list.concat(item));
+    },
+    removeItem: (id) => {
+      setList(list.filter(item => item.id !== id));
+    }
   };
 
   return (
     <div className="container">
       <h1 className="mb-3">To Do List</h1>
-      <AddItem action={addItem} />
-      <List list={list} />
+      <AddItem action={actions.addItem} />
+      <List list={list} actions={actions} />
     </div>
   );
 }

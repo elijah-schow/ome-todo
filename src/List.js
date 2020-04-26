@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const List = ({ list }) => {
+const List = ({ list, actions }) => {
     return (
         <ul className="list list-group">
             {list.map((item) => (
@@ -13,6 +13,11 @@ const List = ({ list }) => {
                         {item.due && item.done && <span> &middot; </span>}
                         {item.done && <span>Done {item.done.toString()}</span>}
                     </div>
+                    <button
+                        type="button"
+                        className="btn btn-danger"
+                        onClick={() => actions.removeItem(item.id)}
+                    >Delete</button>
                 </li>
             ))}
         </ul>
@@ -20,7 +25,8 @@ const List = ({ list }) => {
 };
 
 List.propTypes = {
-    list: PropTypes.array.isRequired
+    list: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired,
 };
 
 export default List;
