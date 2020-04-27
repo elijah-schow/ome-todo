@@ -10,10 +10,18 @@ const AddItem = ({ action }) => {
 
     const [open, setOpen] = useState(false);
 
+    /**
+     * Show the add item form
+     */
     const onOpen = () => {
         setOpen(true);
     };
 
+    /**
+     * Handle form submission
+     * 
+     * @param {Object} data
+     */
     const onSubmit = (data) => {
         action({
             id: uuid(),

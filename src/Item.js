@@ -12,6 +12,9 @@ const Item = ({ item, actions }) => {
 
     const [editing, setEditing] = useState(false);
 
+    /**
+     * Show the item editor
+     */
     const open = () => {
         // Don't re-render if the item is already open
         if (editing) return;
@@ -20,6 +23,9 @@ const Item = ({ item, actions }) => {
         setEditing(true);
     };
 
+    /**
+     * Handle form submission
+     */
     const onSubmit = ({ due, done, ...data }) => {
         actions.updateItem({
             id: item.id,
@@ -30,6 +36,9 @@ const Item = ({ item, actions }) => {
         setEditing(false);
     };
 
+    /**
+     * Cancel changes and close the editor
+     */
     const cancel = () => {
         reset();
         setEditing(false);
