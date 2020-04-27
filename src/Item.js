@@ -88,6 +88,7 @@ const Item = ({ item, actions }) => {
                                         "is-invalid": errors.name
                                     })}
                                 name="name"
+                                autoFocus
                                 defaultValue={item.name}
                                 ref={register({ required: true })}
                             />
