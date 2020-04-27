@@ -25,12 +25,21 @@ function App() {
   ]);
 
   const actions = {
+
     addItem: (item) => {
       setList(list.concat(item));
     },
+
+    updateItem: (newItem) => {
+      setList(list.map(oldItem => oldItem.id === newItem.id
+        ? newItem
+        : oldItem));
+    },
+
     removeItem: (id) => {
       setList(list.filter(item => item.id !== id));
     }
+
   };
 
   return (

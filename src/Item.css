@@ -1,3 +1,7 @@
+.item:not(.editing) {
+    cursor: pointer;
+}
+
 .item-name {
     font-weight: bold;
 }
