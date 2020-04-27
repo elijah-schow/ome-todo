@@ -2,3 +2,8 @@ html,
 body {
     background-color: #FCFCFC;
 }
+
+.title {
+    margin: 2rem;
+    text-align: center;
+}

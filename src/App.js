@@ -67,7 +67,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1 className="mb-3">To Do List</h1>
+      <h1 className="title">To Do List</h1>
       <AddItem action={actions.addItem} />
       <List list={list} actions={actions} />
     </div>
