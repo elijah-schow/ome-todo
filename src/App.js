@@ -11,12 +11,12 @@ function App() {
   const actions = {
 
     /**
-     * Add an item to the list
+     * Add an item to the top of the list.
      * 
      * @param {Object} item
      */
     addItem: (item) => {
-      setList(list.concat(item));
+      setList([item].concat(list));
     },
 
     /**
