@@ -7,7 +7,7 @@ import './Item.css';
 
 const Item = ({ item, actions }) => {
 
-    const { handleSubmit, register, reset } = useForm();
+    const { handleSubmit, register, reset, errors } = useForm();
 
     const [editing, setEditing] = useState(false);
 
@@ -66,12 +66,19 @@ const Item = ({ item, actions }) => {
                             <label htmlFor="name">Name</label>
                             <input
                                 id="name"
-                                className="form-control"
+                                className={classnames(
+                                    "form-control",
+                                    {
+                                        "is-invalid": errors.name
+                                    })}
                                 name="name"
-                                autoFocus
                                 defaultValue={item.name}
-                                ref={register}
+                                ref={register({ required: true })}
                             />
+                            {errors.name &&
+                                <div className="invalid-feedback d-block">
+                                    Name is required
+                                </div>}
                         </div>
 
                         {/* Description */}

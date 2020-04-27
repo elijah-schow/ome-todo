@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { v4 as uuid } from 'uuid';
+import classnames from 'classnames';
 
 const AddItem = ({ action }) => {
 
-    const { handleSubmit, register, reset } = useForm();
+    const { handleSubmit, register, reset, errors } = useForm();
 
     const onSubmit = (data) => {
         action({
@@ -23,10 +24,18 @@ const AddItem = ({ action }) => {
                 <label htmlFor="name">Name</label>
                 <input
                     id="name"
-                    className="form-control"
+                    className={classnames(
+                        "form-control",
+                        {
+                            "is-invalid": errors.name
+                        })}
                     name="name"
-                    ref={register}
+                    ref={register({ required: true })}
                 />
+                {errors.name &&
+                    <div className="invalid-feedback d-block">
+                        Name is required
+                    </div>}
             </div>
 
             {/* Description */}
