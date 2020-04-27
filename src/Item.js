@@ -45,7 +45,7 @@ const Item = ({ item, actions }) => {
     return (
         <li
             className={classnames(
-                "item list-group-item py-3",
+                "item list-group-item",
                 {
                     "list-group-item-action": !editing,
                     "editing": editing,
@@ -138,6 +138,8 @@ const Item = ({ item, actions }) => {
                      * View Mode
                      */
                     <div className="row">
+
+                        {/* Checkbox */}
                         <div className="col col-auto">
                             <div className="form-check">
                                 <input
@@ -153,10 +155,12 @@ const Item = ({ item, actions }) => {
                                 />
                             </div>
                         </div>
+
+                        {/* Dates */}
                         <div className="col">
-                            <div className="item-name mb-2">{item.name}</div>
+                            <div className="item-name">{item.name}</div>
                             {item.description &&
-                                <div className="item-description mb-2">
+                                <div className="item-description">
                                     {item.description}
                                 </div>}
                             {(item.due || item.done) &&
@@ -166,12 +170,17 @@ const Item = ({ item, actions }) => {
                                     {item.done && <span>Done {item.done.toString()}</span>}
                                 </div>}
                         </div>
+
+                        {/* Delete */}
                         <div className="col col-auto">
                             <button
                                 type="button"
-                                className="btn btn-danger"
+                                className="close"
+                                aria-label="close"
                                 onClick={() => actions.removeItem(item.id)}
-                            >Delete</button>
+                            >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                     </div>
                 )}
