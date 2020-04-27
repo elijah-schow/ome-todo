@@ -20,23 +20,23 @@ const AddItem = ({ action }) => {
 
             {/* Name */}
             <div className="form-group">
-                <label for="name">Name</label>
+                <label htmlFor="name">Name</label>
                 <input
                     id="name"
                     className="form-control"
                     name="name"
-                    ref={register()}
+                    ref={register}
                 />
             </div>
 
             {/* Description */}
             <div className="form-group">
-                <label for="description">Description</label>
+                <label htmlFor="description">Description</label>
                 <textarea
                     id="description"
                     className="form-control"
                     name="description"
-                    ref={register()}
+                    ref={register}
                 />
             </div>
 
@@ -45,25 +45,25 @@ const AddItem = ({ action }) => {
 
                 {/* Due Date */}
                 <div className="form-group col-6">
-                    <label for="due">Due</label>
+                    <label htmlFor="due">Due</label>
                     <input
                         type="date"
                         id="due"
                         className="form-control"
                         name="due"
-                        ref={register()}
+                        ref={register}
                     />
                 </div>
 
                 {/* Done Date */}
                 <div className="form-group col-6">
-                    <label for="done">Done</label>
+                    <label htmlFor="done">Done</label>
                     <input
                         type="date"
                         id="done"
                         className="form-control"
                         name="done"
-                        ref={register()}
+                        ref={register}
                     />
                 </div>
 
