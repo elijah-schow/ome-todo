@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { useForm } from 'react-hook-form';
+import classnames from 'classnames';
+import { format } from 'date-fns';
 
 import './Item.css';
 
@@ -19,9 +20,11 @@ const Item = ({ item, actions }) => {
         setEditing(true);
     };
 
-    const onSubmit = (data) => {
+    const onSubmit = ({ due, done, ...data }) => {
         actions.updateItem({
             id: item.id,
+            due: due ? new Date(due) : null,
+            done: done ? new Date(done) : null,
             ...data,
         });
         setEditing(false);
@@ -41,6 +44,10 @@ const Item = ({ item, actions }) => {
     const stop = (event) => {
         event.stopPropagation();
     };
+
+    // Date fields require a specific string format to work
+    const defaultDue = item.due ? format(Date.parse(item.due), 'yyyy-MM-dd') : null;
+    const defaultDone = item.done ? format(Date.parse(item.done), 'yyyy-MM-dd') : null;
 
     return (
         <li
@@ -104,7 +111,7 @@ const Item = ({ item, actions }) => {
                                     id="due"
                                     className="form-control"
                                     name="due"
-                                    defaultValue={item.due}
+                                    defaultValue={defaultDue}
                                     ref={register}
                                 />
                             </div>
@@ -117,7 +124,7 @@ const Item = ({ item, actions }) => {
                                     id="done"
                                     className="form-control"
                                     name="done"
-                                    defaultValue={item.done}
+                                    defaultValue={defaultDone}
                                     ref={register}
                                 />
                             </div>
@@ -172,9 +179,16 @@ const Item = ({ item, actions }) => {
                                 </div>}
                             {(item.due || item.done) &&
                                 <div className="item-dates">
-                                    {item.due && <span>Due {item.due.toString()}</span>}
+                                    {/* Done */}
+                                    {item.done && <span>Done {
+                                        format(Date.parse(item.done), 'PP')
+                                    }</span>}
+                                    {/* Interpunct */}
                                     {item.due && item.done && <span> &middot; </span>}
-                                    {item.done && <span>Done {item.done.toString()}</span>}
+                                    {/* Due */}
+                                    {item.due && <span>Due {
+                                        format(Date.parse(item.due), 'PP')
+                                    }</span>}
                                 </div>}
                         </div>
 
