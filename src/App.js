@@ -38,7 +38,19 @@ function App() {
 
     removeItem: (id) => {
       setList(list.filter(item => item.id !== id));
-    }
+    },
+
+    markItem: (id) => {
+      setList(
+        list.map((item) => {
+          if (item.id !== id) return item;
+          const done = item.done == null
+            ? new Date()
+            : null;
+          return { ...item, done };
+        })
+      );
+    },
 
   };
 

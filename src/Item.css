@@ -10,3 +10,7 @@
     color: #767676;
     font-size: 0.85rem;
 }
+
+.item .form-check-input {
+    cursor: pointer;
+}

@@ -15,6 +15,7 @@ const Item = ({ item, actions }) => {
         // Don't re-render if the item is already open
         if (editing) return;
 
+        // Show the editing form
         setEditing(true);
     };
 
@@ -30,6 +31,16 @@ const Item = ({ item, actions }) => {
         reset();
         setEditing(false);
     }
+
+    /**
+     * Prevent the event from bubbling up the DOM. In this case, it prevents
+     * clicking the checkbox from opening the item editor.
+     * 
+     * @param {*} event 
+     */
+    const stop = (event) => {
+        event.stopPropagation();
+    };
 
     return (
         <li
@@ -108,10 +119,10 @@ const Item = ({ item, actions }) => {
 
                         {/* Buttons */}
                         <div className="row">
-                            <div class="col">
+                            <div className="col">
                                 <button className="btn btn-primary btn-block">Save</button>
                             </div>
-                            <div class="col">
+                            <div className="col">
                                 <button
                                     type="button"
                                     className="btn btn-secondary btn-block"
@@ -126,7 +137,22 @@ const Item = ({ item, actions }) => {
                     /**
                      * View Mode
                      */
-                    <div class="row">
+                    <div className="row">
+                        <div className="col col-auto">
+                            <div className="form-check">
+                                <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    /* Cast `done` to a boolean, otherwise react
+                                    will complain about switching between
+                                    controlled and uncontrolled inputs.
+                                    https://fb.me/react-controlled-components */
+                                    checked={!!item.done}
+                                    onChange={() => actions.markItem(item.id)}
+                                    onClick={stop}
+                                />
+                            </div>
+                        </div>
                         <div className="col">
                             <div className="item-name mb-2">{item.name}</div>
                             {item.description &&
