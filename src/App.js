@@ -28,9 +28,9 @@ function App() {
       setList(
         list.map((item) => {
           if (item.id !== id) return item;
-          const done = item.done == null
-            ? new Date()
-            : null;
+          const done = item.done
+            ? null
+            : new Date();
           return { ...item, done };
         })
       );
