@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import 'nodep-date-input-polyfill';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import './App.css';

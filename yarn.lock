@@ -6865,6 +6865,11 @@ node-releases@^1.1.52:
   dependencies:
     semver "^6.3.0"
 
+nodep-date-input-polyfill@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/nodep-date-input-polyfill/-/nodep-date-input-polyfill-5.2.0.tgz#035faa9c4b17fa5ccfb8b092010f3ede6b6f89b6"
+  integrity sha1-A1+qnEsX+lzPuLCSAQ8+3mtvibY=
+
 normalize-package-data@^2.3.2:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/normalize-package-data/-/normalize-package-data-2.5.0.tgz#e66db1838b200c1dfc233225d12cb36520e234a8"
