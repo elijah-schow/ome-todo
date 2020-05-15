@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { v4 as uuid } from 'uuid';
@@ -113,4 +113,4 @@ AddItem.propTypes = {
     action: PropTypes.func.isRequired,
 };
 
-export default AddItem;
+export default memo(AddItem);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import classnames from 'classnames';
@@ -224,4 +224,4 @@ Item.propTypes = {
     actions: PropTypes.object.isRequired,
 }
 
-export default Item;
+export default memo(Item);

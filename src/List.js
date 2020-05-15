@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import Item from './Item';
@@ -16,4 +16,4 @@ List.propTypes = {
     actions: PropTypes.object.isRequired,
 };
 
-export default List;
+export default memo(List);
